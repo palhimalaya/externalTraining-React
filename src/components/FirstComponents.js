@@ -1,6 +1,6 @@
 import React from 'react'
 
-const First = ({title,name,age,subject,location,isStudent}) => {
+const First = ({id,title,name,age,subject,location,isStudent}) => {
   return (
     <div>
         <h1>I am first component</h1>
@@ -9,7 +9,7 @@ const First = ({title,name,age,subject,location,isStudent}) => {
         <h2>{age}</h2>
         <h2>{subject}</h2>
         {isStudent===true ?<button type="button">I am first</button>: 'none' }
-        {subject.map(item => <li>{item}</li>)}
+        {subject.map(item => <li>{item.name}</li>)}
         <h3>Location : {location.city} and {location.country}</h3>
     </div>
   )

@@ -1,9 +1,12 @@
 import {First, Second} from "./components/FirstComponents";
+import Register from "./components/StudentRegister";
+import { STUDENTS } from './constants/index';
 
 function App() {
   return (
     <div>
-      <First 
+      <First
+      id={1} 
       title={'New component'}
       name={'John'}
       age={25}
@@ -12,6 +15,12 @@ function App() {
       isStudent = {false}
        />
       <Second/>
+      <Register
+      batch={'2075'}
+      faculty = {'Computer Engineering'}
+      college = {'Kantipur Engineering College'}
+      students = {STUDENTS}
+      />
     </div>
   );
 }
