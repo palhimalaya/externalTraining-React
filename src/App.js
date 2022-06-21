@@ -1,3 +1,4 @@
+import Counter from "./components/Counter";
 import {First, Second} from "./components/FirstComponents";
 import Register from "./components/StudentRegister";
 import { STUDENTS } from './constants/index';
@@ -21,6 +22,7 @@ function App() {
       college = {'Kantipur Engineering College'}
       students = {STUDENTS}
       />
+      <Counter/>
     </div>
   );
 }
