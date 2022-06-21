@@ -1,6 +1,6 @@
 import React from 'react'
 
-const First = ({title,name,age,gender,subject,location,isStudent}) => {
+const First = ({title,name,age,subject,location,isStudent}) => {
   return (
     <div>
         <h1>I am first component</h1>
