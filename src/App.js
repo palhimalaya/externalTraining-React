@@ -1,4 +1,4 @@
-import First from "./components/FirstComponents";
+import {First, Second} from "./components/FirstComponents";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       location={{city:'New York', country:'USA'}}
       isStudent = {false}
        />
-        
+      <Second/>
     </div>
   );
 }

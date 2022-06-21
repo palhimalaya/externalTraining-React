@@ -14,5 +14,9 @@ const First = ({title,name,age,subject,location,isStudent}) => {
     </div>
   )
 }
-
-export default First
+const Second = () => {
+    return (
+    <div><h1>Hello</h1></div>
+)}
+export {First, Second}
+// export default First
