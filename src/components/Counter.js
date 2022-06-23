@@ -1,8 +1,10 @@
 import React from 'react'
+import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import { useState } from 'react'
 
 const Counter = () => {
     const [value, setValue] = useState(0)
+    const [hover, setHover] = useState('')
     const handlePlus = () => {
         setValue(value + 1)
     }
@@ -12,11 +14,22 @@ const Counter = () => {
         }
         
     }
+    const onHover =()=>{
+        setHover('gold')
+    }
+    const offHover =()=>{
+        setHover('red')
+    }
   return (
-    <div style={{marginTop: '10px', display: 'flex', justifyContent: 'center', marginBottom: '100px'}}>
-        <button onClick={handleMinus}>-</button>
-        <h1 style={{padding:'10px'}}>{value}</h1>
-        <button  onClick={handlePlus}>+</button>
+    <div>
+        
+        <AiOutlineMinusCircle size={32} color={hover} onMouseEnter={onHover} onMouseLeave={offHover} onClick={handleMinus}/> 
+        <h1 style={{padding: '5px',}}>
+            {value}
+        </h1>
+             <AiOutlinePlusCircle size={32} color={'green'} onClick={handlePlus}/>
+
+            
         
     </div>
   )
