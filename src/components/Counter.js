@@ -27,10 +27,7 @@ const Counter = () => {
         <h1 style={{padding: '5px',}}>
             {value}
         </h1>
-             <AiOutlinePlusCircle size={32} color={'green'} onClick={handlePlus}/>
-
-            
-        
+             <AiOutlinePlusCircle size={32} color={'green'} onClick={handlePlus}/>       
     </div>
   )
 }
