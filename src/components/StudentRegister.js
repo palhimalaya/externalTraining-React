@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { AiFillDelete } from "react-icons/ai";
 
 const Register = ({ batch, faculty, college, students }) => {
   const [entry, setEntry] = useState(students);
@@ -13,47 +14,74 @@ const Register = ({ batch, faculty, college, students }) => {
   const handlePressEnterAtName = (e) => {
     if (e.key === "Enter") {
       ageRef.current.focus();
+    } else if (e.key === "ArrowLeft") {
+      addressRef.current.focus();
+    } else if (e.key === "ArrowRight") {
+      ageRef.current.focus();
     }
   };
 
   const handlePressEnterAtAge = (e) => {
     if (e.key === "Enter") {
       addressRef.current.focus();
+    } else if (e.key === "ArrowLeft") {
+      nameRef.current.focus();
+    } else if (e.key === "ArrowRight") {
+      addressRef.current.focus();
     }
   };
 
   const handlePressEnterAtAddress = (e) => {
     if (e.key === "Enter") {
-      setEntry([
-        ...entry,
-        {
-          id: entry.length + 1,
-          name: name,
-          age: age,
-          address: address,
-        },
-      ]);
+      handleSetEntries();
+      nameRef.current.focus();
+    } else if (e.key === "ArrowLeft") {
+      ageRef.current.focus();
+    } else if (e.key === "ArrowRight") {
       nameRef.current.focus();
     }
+  };
+
+  const handleSetEntries = (e) => {
+    setEntry([
+      ...entry,
+      {
+        id: entry.length + 1,
+        name: name,
+        age: age,
+        address: address,
+      },
+    ]);
     setName("");
     setAge("");
     setAddress("");
   };
 
+  const handleRemoveEntry = (id) => {
+    setEntry(entry.filter((entry) => entry.id !== id));
+  };
+
   return (
     <div>
       <h1>Register</h1>
-      <h2>Batch : {batch}</h2>
+      <h2>Batch : {batch} </h2>
       <h2>Faculty : {faculty}</h2>
       <h2>College : {college}</h2>
       <h2>Students : </h2>
       {entry.map((student) => (
         <div key={student.id}>
-          {student.id} {student.name} {student.age} {student.address}
+          {student.id} {student.name} {student.age} {student.address}{" "}
+          <AiFillDelete
+            color="red"
+            onClick={() => {
+              handleRemoveEntry(student.id);
+            }}
+          />
         </div>
       ))}
       <form action="">
         <input
+          autoFocus
           onKeyUp={handlePressEnterAtName}
           value={name}
           ref={nameRef}
@@ -81,32 +109,16 @@ const Register = ({ batch, faculty, college, students }) => {
           type="text"
         />
       </form>
-      <button
-        onClick={() => {
-          setEntry([
-            ...entry,
-            {
-              id: entry.length + 1,
-              name: name,
-              age: age,
-              address: address,
-            },
-          ]);
-        }}
-      >
-        Add
-      </button>
+      <button onClick={handleSetEntries}>Add</button>
       <button
         onClick={() => {
           setEntry([]);
-          setName("");
-          setAge("");
-          setAddress("");
         }}
       >
         Clear all
       </button>
 
+      {/* 
       <div>
         <form action="">
           <h3>Input Types</h3>
@@ -225,7 +237,7 @@ const Register = ({ batch, faculty, college, students }) => {
             }}
           />
         </form>
-      </div>
+      </div> */}
     </div>
   );
 };
